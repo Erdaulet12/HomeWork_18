@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+
+    {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title|title }}</strong>:
+                    {{ task.description|truncatewords:10 }}
+                    {% if task.completed %}
+                        <span style="color: green;">(Completed)</span>
+                    {% else %}
+                        <span style="color: red;">(Not completed)</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks available.</p>
+    {% endif %}
+
+    {% with "Some text to be filtered" as text %}
+        {{ text|lower }}
+    {% endwith %}
+</body>
+</html>
